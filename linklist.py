@@ -67,7 +67,6 @@ class LinkedList:
         self.head = self.head.next
     
     def remove_at_end(self):
-        import pdb; pdb.set_trace()
         if not self.head:
             return
         if self.head.next is None:
@@ -78,6 +77,25 @@ class LinkedList:
             current = current.next
         current.next = None
         self.tail = current
+        
+    def remove_from_middle(self, loc):
+        if not self.head:
+            return
+        if self.head.next is None:
+            self.head = None
+            return
+        current = self.head
+        pos = 0
+        while current.next:
+            if pos == loc - 1:
+                temp = current.next.next
+                current.next = temp
+                break
+            current = current.next
+            pos +=1
+        
+            
+            
             
                 
             
@@ -100,7 +118,8 @@ def main():
             6. Display TAIL of Linked List\n \
             7. Remove a Node from beginning\n \
             8. Remove a Node from ending\n \
-            9. Quit  \
+            9. Remove a Node from middle\n \
+            10. Quit  \
             ")
         
         choice = int(input("\nEnter your choice \n"))
@@ -130,6 +149,10 @@ def main():
                 ll.remove_at_end()
                 print("Removed from end")
             case 9:
+                loc = int(input("Enter loc"))
+                ll.remove_from_middle(loc)
+                print("Removed from end")
+            case 10:
                 print("bubye...")
                 return
 
