@@ -67,19 +67,17 @@ class LinkedList:
         self.head = self.head.next
     
     def remove_at_end(self):
-        #import pdb; pdb.set_trace()
+        import pdb; pdb.set_trace()
         if not self.head:
             return
         if self.head.next is None:
-            self.head = self.tail = None
+            self.head = None
+            return
         current = self.head
-        print(current)
-        while current.next and current.next.next:
+        while current.next.next:
             current = current.next
-            if current.next == self.tail:
-                
-                current.next = None
-                self.tail = current
+        current.next = None
+        self.tail = current
             
                 
             
@@ -138,4 +136,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    pass
