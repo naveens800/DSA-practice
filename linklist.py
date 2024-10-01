@@ -3,7 +3,7 @@ class Node:
     def __init__(self, data=None, next=None):
         self.data = data
         self.next = next
-
+import math
 class LinkedList:
 
     def __init__(self, head:Node = None, tail:Node = None) :
@@ -93,6 +93,27 @@ class LinkedList:
                 break
             current = current.next
             pos +=1
+    
+    def print_middle(self):
+        if not self.head:
+            return
+        if self.head.next is None:
+            return
+        current = self.head
+        size = 0
+        while current.next:
+            current = current.next
+            size += 1
+        
+        temp = self.head
+        pos = 0
+        while temp:
+            if pos == math.ceil(size/2):
+                print(temp.data)
+            temp = temp.next
+            pos += 1
+        
+            
         
             
             
@@ -119,7 +140,8 @@ def main():
             7. Remove a Node from beginning\n \
             8. Remove a Node from ending\n \
             9. Remove a Node from middle\n \
-            10. Quit  \
+            10. Print middle Node\n \
+            11. Quit  \
             ")
         
         choice = int(input("\nEnter your choice \n"))
@@ -153,6 +175,8 @@ def main():
                 ll.remove_from_middle(loc)
                 print("Removed from end")
             case 10:
+                ll.print_middle()
+            case 11:
                 print("bubye...")
                 return
 
